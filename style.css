@@ -136,4 +136,57 @@ html, body {
     margin-top: 10px;
   }
   
-  
+  /* || positionnement des images */
+
+  navlist {
+    position: relative;
+  }
+
+  navlist li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    top: 0;
+  }
+
+  navlist li, navlist a{
+    height: 60px;
+    display: block;
+  }
+
+  backward{
+    left: 0px;
+    width: 30px;
+    height: 20px;
+    background-image:url(images/backward.jpg);
+    border: black;
+    border-width: 1px;
+  }
+
+  play{
+    left: 35px;
+    width: 30px;
+    height: 20px;
+    background-image:url(images/play.jpg);
+    border: black;
+    border-width: 1px;
+  }
+
+  pause{
+    left: 70px;
+    width: 30px;
+    height: 20px;
+    background-image: url(images/pause.jpg);
+    border: black;
+    border-width: 1px;
+  }
+
+  forward{
+    left: 105px;
+    width: 30px;
+    height: 20px;
+    background-image: url(images/forward.jpg);
+    border: black;
+    border-width: 1px;
+  }

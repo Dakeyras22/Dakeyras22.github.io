@@ -1,5 +1,26 @@
 <!DOCTYPE html>
 <html>
+  <script>
+    function play(idPlayer, control) {
+        var player = document.querySelector('#' + idPlayer);
+         
+        if (player.paused) {
+            player.play();
+            control.textContent = 'Pause';
+        } else {
+            player.pause();
+            control.textContent = 'Play';
+        }
+    }
+     
+    function resume(idPlayer) {
+        var player = document.querySelector('#' + idPlayer);
+         
+        player.currentTime = 0;
+        player.pause();
+    }
+  </script>
+
   <head>
     <meta charset="utf-8">
 
@@ -25,12 +46,31 @@
      <main>
       <article>
         <h4>Mettons nous bien :</h4>
+
+        <p>Tree of Life - Billx</p>
+
+        <audio id="treeOfLifePlayer">
+          <source src="musiques/billx-tree-of-life-psy-to-hard.mp3"></source>
+        </audio>
+         
+        <button class="control" onclick="play('treeOfLifePlayer', this)">Play</button>
+        <button class="control" onclick="resume('treeOfLifePlayer')">Stop</button>
+
+        <p>Irish Legend - Billx</p>
+
+        <audio id="irishLegendPlayer">
+          <source src="musiques/billx-black-muffin-irish-legend-official-video.mp3"></source>
+        </audio>
+         
+        <button class="control" onclick="play('irishLegendPlayer', this)">Play</button>
+        <button class="control" onclick="resume('irishLegendPlayer')">Stop</button>
       </article>
+      
 
       <aside>
         <h2>En relation</h2>
         <ul>
-          <li><a href="#"></a>relation1</li>
+          <li><a href="./compteur.html"></a>compteur</li>
           <li><a href="#"></a>relation2</li>
           <li><a href="#"></a>relation3</li>
           <li><a href="#"></a>relation4</li>
