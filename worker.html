@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
 <script>
-    var w;
+    var w = [];
     function startWorker(){
-        w = new Worker("webworker.js");
-        w.onmessage = function(message){
-            var coordinates = JSON.parse(message.data);
-            var canvas = document.getElementById("myCanvas");
-            coordinates.canvas = canvas;
-            coordinates.canvas2dContext = coordinates.canvas.getContext("2d");
-            coordinates.canvas2dContext.beginPath();
-            coordinates.canvas2dContext.arc(coordinates.x, coordinates.y, 5, 0, 2 * Math.PI, false);
-            coordinates.canvas2dContext.fillStyle = "red";
-            coordinates.canvas2dContext.fill();
+        for(var i = 0; i<10; i++){
+            w[i] = new Worker("webworker.js");
+            w[i].onmessage = function(message){
+                var circle = JSON.parse(message.data);
+                var canvas = document.getElementById("myCanvas");
+                circle.canvas = canvas;
+                circle.canvas2dContext = circle.canvas.getContext("2d");
+                circle.canvas2dContext.beginPath();
+                circle.canvas2dContext.arc(circle.x, circle.y, 5, 0, 2 * Math.PI, false);
+                circle.canvas2dContext.fillStyle = circle.color;
+                circle.canvas2dContext.fill();
+            }
         }
     }
 
