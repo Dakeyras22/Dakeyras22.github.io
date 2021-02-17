@@ -4,7 +4,8 @@
       compteur = 10;
 
       function lancerCompteur(){
-        myVar = setInterval(setText, 10000);
+        document.getElementById("cpt").innerHTML = compteur+" secondes restantes"
+        myVar = setInterval(setText, 1000);
       }
 
       function setText() {
