@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<script>
+    var w;
+    function startWorker(){
+        w = new Worker("webworker.js");
+        w.onmessage = function(message){
+            var coordinates = JSON.parse(message.data);
+            var canvas = document.getElementById("myCanvas");
+            coordinates.canvas = canvas;
+            coordinates.canvas2dContext = coordinates.canvas.getContext("2d");
+            coordinates.canvas2dContext.beginPath();
+            coordinates.canvas2dContext.arc(coordinates.x, coordinates.y, 5, 0, 2 * Math.PI, false);
+            coordinates.canvas2dContext.fillStyle = "red";
+            coordinates.canvas2dContext.fill();
+        }
+    }
+
+    startWorker();
+</script>
+
+<head>
+    <meta charset="utf-8">
+
+    <title>WebWorker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body>
+    <header>
+        <h1>En-tête</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="./page1.html">Qui suis je ?</a></li>
+            <li><a href="./musique.html">Musique/a></li>
+            <li><a href="./index.html">Accueil</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <article>
+            <canvas id="myCanvas" width=600px height=600px
+                style="position: relative; left: 0px; top: 0px; background-color: black;">
+            </canvas>
+        </article>
+
+        <aside>
+            <h2>En relation</h2>
+            <ul>
+                <li><a href="./compteur.html">Compteur</a></li>
+                <li><a href="./carreRouge.html">Carrés Rouges</a></li>
+                <li><a href="./AJAX.html">AJAX</a></li>
+                <li><a href="./worker.html">WebWorker</a></li>
+            </ul>
+        </aside>
+
+    </main>
+
+    <footer>
+        <p>©Copyright ... </p>
+    </footer>
+
+</body>
+
+</html>

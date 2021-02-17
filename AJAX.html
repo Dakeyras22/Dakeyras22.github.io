@@ -1,82 +1,85 @@
 <!DOCTYPE html>
 <html>
-    <script>
-        function callback(text){
-            var coordinates = JSON.parse(text);
-            var canvas = document.getElementById("myCanvas");
-            coordinates.canvas = canvas;
-            coordinates.canvas2dContext=coordinates.canvas.getContext("2d");
-            coordinates.canvas2dContext.beginPath();
-            coordinates.canvas2dContext.arc(coordinates.x,coordinates.y,5,0,2*Math.PI,false);
-            coordinates.canvas2dContext.fillStyle = "red";
-            coordinates.canvas2dContext.fill();
-        }
-        
-        function getCoordinatesXHR(){
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "https://stwom.herokuapp.com/600");
-            xhr.send();
-            xhr.onreadystatechange = function() { 
-                if (xhr.readyState == 4 && xhr.status == 200)
-                    callback(xhr.responseText);
-            }
-        }
+<script>
+    function callback(text) {
+        var coordinates = JSON.parse(text);
+        var canvas = document.getElementById("myCanvas");
+        coordinates.canvas = canvas;
+        coordinates.canvas2dContext = coordinates.canvas.getContext("2d");
+        coordinates.canvas2dContext.beginPath();
+        coordinates.canvas2dContext.arc(coordinates.x, coordinates.y, 5, 0, 2 * Math.PI, false);
+        coordinates.canvas2dContext.fillStyle = "red";
+        coordinates.canvas2dContext.fill();
+    }
 
-        function getCoordinatesFetchAPI(){
-            fetch("https://stwom.herokuapp.com/600")
+    function getCoordinatesXHR() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://stwom.herokuapp.com/600");
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200)
+                callback(xhr.responseText);
+        }
+    }
+
+    function getCoordinatesFetchAPI() {
+        fetch("https://stwom.herokuapp.com/600")
             .then(response => response.text())
             .then(response => callback(response))
-        }
+    }
 
-        function timer(){
+    function timer() {
         myVar = setInterval(getCoordinatesFetchAPI, 1000);
-      }
+    }
 
-      document.addEventListener("DOMContentLoaded",timer);
-    </script>
-  <head>
+    document.addEventListener("DOMContentLoaded", timer);
+</script>
+
+<head>
     <meta charset="utf-8">
 
-    <title>Accueil</title>
+    <title>AJAX</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 
-  </head>
+</head>
 
-  <body>
+<body>
     <header>
-      <h1>En-tête</h1>
+        <h1>En-tête</h1>
     </header>
 
     <nav>
-      <ul>
-        <li><a href="./page1.html">Qui suis je ?</a></li>
-        <li><a href="./musique.html">Musique/a></li>
-        <li><a href="./index.html">Accueil</a></li>
-      </ul>
-
-     </nav>
-
-     <main>
-      <article>
-        <canvas id="myCanvas" width=600px height=600px style = "position: relative; left: 0px; top: 0px; background-color: black;">               
-        </canvas> 
-      </article>
-
-      <aside>
-        <h2>En relation</h2>
         <ul>
-          <li><a href="./compteur.html">Compteur</a></li>
-          <li><a href="./carreRouge.html">Carrés Rouges</a></li>
-          <li><a href="./AJAX.html">AJAX</a></li>
-          <li><a href="#"></a>relation4</li>
+            <li><a href="./page1.html">Qui suis je ?</a></li>
+            <li><a href="./musique.html">Musique/a></li>
+            <li><a href="./index.html">Accueil</a></li>
         </ul>
-      </aside>
+
+    </nav>
+
+    <main>
+        <article>
+            <canvas id="myCanvas" width=600px height=600px
+                style="position: relative; left: 0px; top: 0px; background-color: black;">
+            </canvas>
+        </article>
+
+        <aside>
+            <h2>En relation</h2>
+            <ul>
+                <li><a href="./compteur.html">Compteur</a></li>
+                <li><a href="./carreRouge.html">Carrés Rouges</a></li>
+                <li><a href="./AJAX.html">AJAX</a></li>
+                <li><a href="./worker.html">WebWorker</a></li>
+            </ul>
+        </aside>
 
     </main>
 
     <footer>
-      <p>©Copyright ... </p>
+        <p>©Copyright ... </p>
     </footer>
 
-  </body>
+</body>
+
 </html>
