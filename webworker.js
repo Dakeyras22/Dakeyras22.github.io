@@ -5,7 +5,7 @@ var intervalle=0;
 function randomCoordinates(){
     x = Math.floor(Math.random()*601);
     y = Math.floor(Math.random()*601);
-    intervalle = (1 + Math.floor(Math.random()*10))*1000;
+    intervalle = (500 + Math.floor(Math.random()*4500));
     message  = "{\"x\":" + x + ",\"y\":" + y +"}"
     postMessage(message);
     console.log("Message Posted to worker : " +message)
