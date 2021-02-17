@@ -1,5 +1,27 @@
 <!DOCTYPE html>
 <html>
+    <script>
+      compteur = 10;
+
+      function lancerCompteur(){
+        myVar = setInterval(setText, 10000);
+      }
+
+      function setText() {
+        compteur--;
+        if(compteur==0){
+          fin();
+        }else{
+          document.getElementById("cpt").innerHTML = compteur+" secondes restantes"
+        }
+      }
+
+      function fin() {
+        clearInterval(myVar);
+        compteur=10;
+        document.getElementById("cpt").innerHTML = "Bonne année !!!"
+      }
+    </script>
   <head>
     <meta charset="utf-8">
 
@@ -23,16 +45,18 @@
      </nav>
 
      <main>
-      <article>
-        
-      </article>
-
+         <article>
+            <div id="cpt">
+                <button class="control" onclick="lancerCompteur()">Start</button>
+            </div> 
+         </article>
+               
       <aside>
         <h2>En relation</h2>
         <ul>
-          <li><a href="./compteur.html"></a>compteur</li>
-          <li><a href="#"></a>relation2</li>
-          <li><a href="#"></a>relation3</li>
+          <li><a href="./compteur.html">Compteur</a></li>
+          <li><a href="./carreRouge.html">Carrés Rouges</a></li>
+          <li><a href="./AJAX.html">AJAX</a></li>
           <li><a href="#"></a>relation4</li>
         </ul>
       </aside>

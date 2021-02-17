@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        cpt1 = 0;
+        cpt2 = 0;
+        cpt3 = 0;
+
+        function lancerCourse(){
+            myVar = setInterval(tic, 1000);
+        }
+
+        function tic() {
+            cpt1+=1;
+            var canvas1 = document.getElementById("myCanvas1");
+            var canvas2 = document.getElementById("myCanvas2");
+            var canvas3 = document.getElementById("myCanvas3");
+            if(cpt1<2){
+                setPosition(canvas1,cpt1);
+            }if(cpt1<5){
+                cpt2+=1;
+                setPosition(canvas1,cpt1);
+                setPosition(canvas2,cpt2);
+            }else{
+                cpt2+=1;
+                cpt3+=1;
+                setPosition(canvas1,cpt1);
+                setPosition(canvas2,cpt2);
+                setPosition(canvas3,cpt3);
+            }
+        }
+
+        function setPosition(myCanvas, cpt){
+            var canvasRight = myCanvas.style.right;
+            if(canvasRight-10>=0){
+                myCanvas.style.left = cpt*10 + "px";
+                myCanvas.clear()
+                myCanvas.draw()
+            }
+        }
+
+        function fin() {
+            clearInterval(myVar);
+        }
+    </script>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Accueil</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+  </head>
+
+  <body>
+    <header>
+      <h1>En-tête</h1>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="./page1.html">Qui suis je ?</a></li>
+        <li><a href="./musique.html">Musique</a></li>
+        <li><a href="./index.html">Accueil</a></li>
+      </ul>
+
+     </nav>
+
+     <main>
+         <article>
+            <canvas id="myCanvas1" width=60px height=60px style = "position: relative; background-color : #FF0000; left: 0px; top : 0px">               
+            </canvas> 
+            <canvas id="myCanvas2" width = 60px height=60px style = "position: relative; background-color: #00FF00; left: -62px; top: 70px; ">
+            </canvas>
+            <canvas id="myCanvas3" width = 60px height=60px style = "position: relative; background-color: #0000FF; left: -124px; top: 140px; ">
+            </canvas>
+        </article>
+
+               
+      <aside>
+        <h2>En relation</h2>
+        <ul>
+          <li><a href="./compteur.html">Compteur</a></li>
+          <li><a href="./carreRouge.html">Carrés Rouges</a></li>
+          <li><a href="./AJAX.html">AJAX</a></li>
+          <li><a href="#"></a>relation4</li>
+        </ul>
+      </aside>
+
+    </main>
+
+    <footer>
+        <div id="start">
+            <button class="control" onclick="lancerCourse()">Start</button>
+        </div> 
+    </footer>
+
+  </body>
+</html>
